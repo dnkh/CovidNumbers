@@ -1,0 +1,55 @@
+
+<div class="col-sm">
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">@CityData.Name (Einwohner:@CityData.Einwohner)</h5>
+    <p class="card-text">
+        <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heute</th>
+                <th scope="col">Gestern</th>
+                <th scope="col">Dif.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Aktive Fälle</th>
+                <td>@CityData.Af</td>
+                <td>@CityData.AfVt</td>
+                <td>@CityData.AfDif</td>
+            </tr>
+            <tr>
+                <th scope="row">Neuinfektionen</th>
+                <td>@CityData.Ni</td>
+                <td>@CityData.NiVt</td>
+                <td>@CityData.NiDif</td>
+            </tr>
+            <tr>
+                <th scope="row">Genesen</th>
+                <td>@CityData.Gn</td>
+                <td>@CityData.GnVt</td>
+                <td>@CityData.GnDif</td>
+                
+            </tr>
+            <tr>
+                <th scope="row">Vertorbene</th>
+                <td>@CityData.Vs</td>
+                <td>@CityData.VsVt</td>
+                <td>@CityData.VsDif</td>
+            </tr>
+        </tbody>
+        </table>
+    </p>
+    <button class="btn btn-primary" @onclick="() => Details.Open(CityData)">Mehr Details</button>
+  </div>
+</div>
+</div>
+
+@code
+{
+
+    [Parameter] public CityData CityData {get;set;}
+    [Parameter] public DetailsDialog Details {get;set;}
+}

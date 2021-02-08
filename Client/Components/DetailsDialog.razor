@@ -1,0 +1,89 @@
+<div class="modal @ModalClass" tabindex="-1" role="dialog" style="display:@ModalDisplay">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@CityData?.Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="() => Close()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>BEZ: @CityData?.BEZ</p>
+                <p>Einwohner: @CityData?.Einwohner</p>
+                <p>Aktive Fälle: @CityData?.Af</p>
+                <p>Aktive Fälle Vortag: @CityData?.AfVt</p>
+                <p>Aktive Fälle Differenz: @CityData?.AfDif</p>
+                <p>Inzidenz (Fälle pro 100K Einwohner): @CityData?.Af100k</p>
+                
+                <p>Neuinfektionn @CityData?.Ni</p>
+                <p>Neuinfektionen Vortag @CityData?.NiVt</p>
+                <p>Neuinfektionen Differenz @CityData?.NiDif</p>
+                @* <p>Neuinfektionen (Fälle pro 100K Einwohner) @CityData?.Ni100k</p> *@
+
+                <p>Genesene @CityData?.Gn</p>
+                <p>Genesene Vortag @CityData?.GnVt</p>
+                <p>Genesene Differenz @CityData?.GnDif</p>
+                
+                <th scope="row">Vertorbene</th>
+                <p>Vertorbene @CityData?.Vs</p>
+                <p>Verstorbene Vortag @CityData?.VsVt</p>
+                <p>Verstorbene Differenz @CityData?.VsDif</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" @onclick="() => Close()">Schließen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (ShowBackdrop)
+{
+    <div class="modal-backdrop fade show"></div>
+}
+
+
+@code {
+
+
+    private bool RenderComponent {get;set;} = false;
+    protected override bool ShouldRender()
+    {
+      return RenderComponent;
+    }
+
+    
+
+    private CityData CityData {get;set;}
+    public Guid Guid = Guid.NewGuid();
+    public string ModalDisplay = "none;";
+    public string ModalClass = "";
+    public bool ShowBackdrop = false;
+
+    public void Open(CityData cityData)
+    {
+        ModalDisplay = "block;";
+        ModalClass = "Show";
+        ShowBackdrop = true;
+        CityData = cityData;
+        RenderComponent = true;
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        ModalDisplay = "none";
+        ModalClass = "";
+        ShowBackdrop = false;
+        
+        StateHasChanged();
+        RenderComponent = false;
+    }
+}
+#pragma warning restore 1998
+#nullable restore
+#line 27 "c:/Users/cwill/projects/temp/CovidNumbers/Client/Components/DetailsDialog.razor"
+
+
+        protected override bool
