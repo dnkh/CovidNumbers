@@ -2,8 +2,13 @@
 @inject IHttpClientFactory ClientFactory
 @using dnkh.covidnumbers.models;
 
-<h1>Covid-19 Fallzahlen im Rhein-Neckar-Kreis</h1>
-
+<div class="input-group input-group-lg">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg">Suche nach einem Ort</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" @oninput="SearchValueChanged">
+</div>
+<hr/>
 
 @if (CurrentCovidData == null)
 {
@@ -12,24 +17,33 @@
 else
 {
     <div class="row">
-    @foreach (var city in CurrentCovidData.Cities.OrderBy( i => i.CityData.Name))
+    @foreach (var city in FilteredCovidData.Cities.OrderBy( i => i.CityData.Name))
     {
-        <CityComponent CityData="city.CityData" Details="DetailsDialog" />
+        <CityComponent CityData="city.CityData" />
     }
     </div>
 }
-<DetailsDialog  @ref="DetailsDialog" />
+    
 
 @code
 {
 
- private DetailsDialog DetailsDialog { get; set; }
+
+public void SearchValueChanged( ChangeEventArgs args )
+{
+    FilteredCovidData.Cities = CurrentCovidData.Cities.Where( c => c.CityData.Name.Contains(args.Value.ToString())).ToList();
+}
+
+
  private CovidModel CurrentCovidData {get;set;}
+ private CovidModel FilteredCovidData {get;set;}
     protected override async Task OnInitializedAsync()
     {
         var client = ClientFactory.CreateClient("DataService");
 
         CurrentCovidData = await client.GetFromJsonAsync<CovidModel>("https://services7.arcgis.com/0Uc5jDlEgdLosloE/arcgis/rest/services/Gemeinden/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returngeometry=false");
+        FilteredCovidData = new CovidModel();
+        FilteredCovidData.Cities = new List<City>(CurrentCovidData.Cities);
 
     }
 }

@@ -42,9 +42,11 @@
 </div>
 </div>
 
+<DetailsDialog @ref="Details"/>
+
 @code
 {
 
     [Parameter] public CityData CityData {get;set;}
-    [Parameter] public DetailsDialog Details {get;set;}
+   public DetailsDialog Details {get;set;}
 }

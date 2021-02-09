@@ -47,10 +47,10 @@
 @code {
 
 
-    private bool RenderComponent {get;set;} = false;
+    private bool DoRenderComponent {get;set;} = false;
     protected override bool ShouldRender()
     {
-      return RenderComponent;
+      return DoRenderComponent;
     }
 
     
@@ -67,7 +67,7 @@
         ModalClass = "Show";
         ShowBackdrop = true;
         CityData = cityData;
-        RenderComponent = true;
+        DoRenderComponent = true;
         StateHasChanged();
     }
 
@@ -78,12 +78,6 @@
         ShowBackdrop = false;
         
         StateHasChanged();
-        RenderComponent = false;
+        DoRenderComponent = false;
     }
 }
-#pragma warning restore 1998
-#nullable restore
-#line 27 "c:/Users/cwill/projects/temp/CovidNumbers/Client/Components/DetailsDialog.razor"
-
-
-        protected override bool
