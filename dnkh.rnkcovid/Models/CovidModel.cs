@@ -176,11 +176,11 @@ namespace dnkh.covidnumbers.models
         [JsonPropertyName("vs_dif")]
         public int VsDif { get; set; } 
 
-        [JsonPropertyName("vs100")]
-        public int Vs100 { get; set; } 
+        // [JsonPropertyName("vs100")]
+        // public int Vs100 { get; set; } 
 
-        [JsonPropertyName("vs100k")]
-        public int Vs100k { get; set; } 
+        // [JsonPropertyName("vs100k")]
+        // public int Vs100k { get; set; } 
 
         [JsonPropertyName("vs_su_vt")]
         public int VsSuVt { get; set; } 
