@@ -14,20 +14,24 @@
                 <p>Aktive Fälle: @CityData?.Af</p>
                 <p>Aktive Fälle Vortag: @CityData?.AfVt</p>
                 <p>Aktive Fälle Differenz: @CityData?.AfDif</p>
-                <p>Inzidenz (Fälle pro 100K Einwohner): @CityData?.Af100k</p>
-                
+                @* <p>Inzidenz (Fälle pro 100K Einwohner): @CityData?.Af100k</p> *@
+                <hr/>
                 <p>Neuinfektionn @CityData?.Ni</p>
                 <p>Neuinfektionen Vortag @CityData?.NiVt</p>
                 <p>Neuinfektionen Differenz @CityData?.NiDif</p>
-                @* <p>Neuinfektionen (Fälle pro 100K Einwohner) @CityData?.Ni100k</p> *@
+                <p>7-Tage-Inzidenz @CityData?.Ni7100k</p>
+                <p>7-Tage-Inzidenz Vortag @CityData?.Ni7100kvt</p>
+                <p>7-Tage-Inzidenz Differenz @CityData?.Ni7100kdi</p>
+                <hr/>
 
                 <p>Genesene @CityData?.Gn</p>
                 <p>Genesene Vortag @CityData?.GnVt</p>
                 <p>Genesene Differenz @CityData?.GnDif</p>
                 
-                <p>Vertorbene @CityData?.Vs</p>
-                <p>Verstorbene Vortag @CityData?.VsVt</p>
-                <p>Verstorbene Differenz @CityData?.VsDif</p>
+                
+                <p>Vertorbene (Summe) @CityData?.VsSu</p>
+                <p>Verstorbene Vortag (Summe) @CityData?.VsSuVt</p>
+                <p>Verstorbene Differenz @CityData?.VsSuDif</p>
 
             </div>
             <div class="modal-footer">
