@@ -12,7 +12,13 @@
 
 @if (CurrentCovidData == null)
 {
-    <p><em>Loading...</em></p>
+    @* <p><em>Loading...</em></p> *@
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" role="status" />
+    </div>
+     <p>
+        <div class="d-flex justify-content-center text-primary" >Aktuelle Daten werden geladen...</div>
+    </p>
 }
 else
 {
