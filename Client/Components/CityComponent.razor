@@ -23,17 +23,22 @@
                 <td>@CityData.Ni</td>
                 <td>@CityData.NiDif</td>
             </tr>
+             <tr>
+                <th scope="row">7-Tage-Inzidenz</th>
+                <td>@CityData?.Ni7100k</td>
+                <td>@CityData?.Ni7100kdi</td>
+            </tr>
             <tr>
                 <th scope="row">Genesen</th>
                 <td>@CityData.Gn</td>
                 <td>@CityData.GnDif</td>
-                
             </tr>
             <tr>
                 <th scope="row">Vertorbene</th>
                 <td>@(CityData.VsSu - CityData.VsSuVt)</td>
                 <td>@CityData.VsSuDif</td>
             </tr>
+           
         </tbody>
         </table>
     </p>
