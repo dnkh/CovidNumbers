@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using BlazorApplicationInsights;
 
 namespace Client
 {
@@ -19,6 +20,7 @@ namespace Client
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddHttpClient("DataService", dataClient => new HttpClient {  BaseAddress= new Uri( "https://services7.arcgis.com/0Uc5jDlEgdLosloE/arcgis/rest/services/Gemeinden/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returngeometry=false")});
+            builder.Services.AddBlazorApplicationInsights();
 
             await builder.Build().RunAsync();
         }
