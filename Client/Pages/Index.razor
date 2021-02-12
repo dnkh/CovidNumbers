@@ -36,7 +36,7 @@ else
 
 public void SearchValueChanged( ChangeEventArgs args )
 {
-    FilteredCovidData.Cities = CurrentCovidData.Cities.Where( c => c.CityData.Name.Contains(args.Value.ToString())).ToList();
+    FilteredCovidData.Cities = CurrentCovidData.Cities.Where( c => c.CityData.Name.ToLower().Contains(args.Value.ToString().ToLower())).ToList();
 }
 
 
