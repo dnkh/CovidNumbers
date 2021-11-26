@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Client.Pages
 {
-    public partial class Index 
+    public partial class Index : ComponentBase
     {
         private CovidModel CurrentCovidData {get;set;}
         private CovidModel FilteredCovidData {get;set;}
