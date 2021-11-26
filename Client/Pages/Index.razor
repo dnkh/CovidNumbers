@@ -1,5 +1,4 @@
 ﻿@page "/"
-@inject IHttpClientFactory ClientFactory
 @using dnkh.covidnumbers.models;
 
 <div class="input-group input-group-lg">
@@ -27,28 +26,4 @@ else
         <CityComponent CityData="city.CityData" />
     }
     </div>
-}
-    
-
-@code
-{
-
-
-public void SearchValueChanged( ChangeEventArgs args )
-{
-    FilteredCovidData.Cities = CurrentCovidData.Cities.Where( c => c.CityData.Name.ToLower().Contains(args.Value.ToString().ToLower())).ToList();
-}
-
-
- private CovidModel CurrentCovidData {get;set;}
- private CovidModel FilteredCovidData {get;set;}
-    protected override async Task OnInitializedAsync()
-    {
-        var client = ClientFactory.CreateClient("DataService");
-
-        CurrentCovidData = await client.GetFromJsonAsync<CovidModel>("https://services7.arcgis.com/0Uc5jDlEgdLosloE/arcgis/rest/services/Gemeinden/FeatureServer/0/query?f=json&where=1%3D1&outFields=*&returngeometry=false");
-        FilteredCovidData = new CovidModel();
-        FilteredCovidData.Cities = new List<City>(CurrentCovidData.Cities);
-
-    }
 }

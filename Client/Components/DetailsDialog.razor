@@ -1,3 +1,4 @@
+
 <div class="modal @ModalClass" tabindex="-1" role="dialog" style="display:@ModalDisplay">
     <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
@@ -44,43 +45,4 @@
 @if (ShowBackdrop)
 {
     <div class="modal-backdrop fade show"></div>
-}
-
-
-@code {
-
-
-    private bool DoRenderComponent {get;set;} = false;
-    protected override bool ShouldRender()
-    {
-      return DoRenderComponent;
-    }
-
-    
-
-    private CityData CityData {get;set;}
-    public Guid Guid = Guid.NewGuid();
-    public string ModalDisplay = "none;";
-    public string ModalClass = "";
-    public bool ShowBackdrop = false;
-
-    public void Open(CityData cityData)
-    {
-        ModalDisplay = "block;";
-        ModalClass = "Show";
-        ShowBackdrop = true;
-        CityData = cityData;
-        DoRenderComponent = true;
-        StateHasChanged();
-    }
-
-    public void Close()
-    {
-        ModalDisplay = "none";
-        ModalClass = "";
-        ShowBackdrop = false;
-        
-        StateHasChanged();
-        DoRenderComponent = false;
-    }
 }
