@@ -8,6 +8,8 @@ namespace Client.Pages
     {
         private CovidModel CurrentCovidData {get;set;}
         private CovidModel FilteredCovidData {get;set;}
+        [Inject]
+        private ICovidDataService CovidDataService {get;set;}
 
         public void SearchValueChanged( ChangeEventArgs args )
         {
